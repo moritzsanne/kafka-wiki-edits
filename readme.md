@@ -10,7 +10,7 @@ Ziel war es eine Kafka Mockup Umgebung mit den folgenden Komponenten aufzusetzen
 	
 
 # How to setup:
-## Kafka & Python Producer
+### Kafka & Python Producer
 
 ```
 #install python requirements:
@@ -22,7 +22,7 @@ docker compose up
 #start producer:
 python producer.py
 ```
-# Aggregation mit ksql
+### Aggregation mit ksql
 
 #bash into ksql_cli:
 `sudo docker exec -it ksqldb-cli ksql http://ksqldb-server:8088`
