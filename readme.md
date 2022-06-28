@@ -9,7 +9,8 @@ Ziel war es eine Kafka Mockup Umgebung mit den folgenden Komponenten aufzusetzen
 	- Ich habe mich an dieser Stelle entschieden die Aggregationen mit kSQL umzusetzen um die Aggregationen über Zeitfenster nicht neu in Python implementieren zu müssen.
 	
 
-# How to run:
+# How to setup:
+## Kafka & Python Producer
 
 ```
 #install python requirements:
@@ -20,22 +21,26 @@ docker compose up
 
 #start producer:
 python producer.py
+```
+# Aggregation mit ksql
 
 #bash into ksql_cli:
-sudo docker exec -it ksqldb-cli ksql http://ksqldb-server:8088
-```
-```
+`sudo docker exec -it ksqldb-cli ksql http://ksqldb-server:8088`
+
 #initiate ksql streams and aggregation queries
-ksql> run script /app/queries/queries.sql;
+`ksql> run script /app/queries/queries.sql;`
 
 Die Ergebnisse der Echtzeit Aggregationen können dann wie folgt über ksql abgefragt werden:
 
 #Globale Edits pro Minute
-ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') AS window_start, EDIT_COUNT FROM GLOBAL_COUNT LIMIT 5;
+```ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') 
+       AS window_start, EDIT_COUNT FROM GLOBAL_COUNT LIMIT 5;```
 
 #Edits der deutschen Wikipedia pro Minute
-ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') AS window_start, EDIT_COUNT FROM DE_EDIT_COUNT LIMIT 5;
+```ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') 
+       AS window_start, EDIT_COUNT FROM DE_EDIT_COUNT LIMIT 5;```
 
+```
 ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') AS window_start, EDIT_COUNT FROM GLOBAL_COUNT LIMIT 5;
 ```
 ```
