@@ -35,17 +35,19 @@ initiate ksql streams and aggregation queries:
 Die Ergebnisse der Echtzeit Aggregationen können wir dann wie folgt über ksql abgefragt werden:
 
 #Globale Edits pro Minute
-```ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') 
-       AS window_start, EDIT_COUNT FROM GLOBAL_COUNT LIMIT 5;```
+```
+ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') 
+       AS window_start, EDIT_COUNT FROM GLOBAL_COUNT LIMIT 5;
+```
 
 #Edits der deutschen Wikipedia pro Minute
-```ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') 
-       AS window_start, EDIT_COUNT FROM DE_EDIT_COUNT LIMIT 5;```
-
+```
+ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') 
+       AS window_start, EDIT_COUNT FROM DE_EDIT_COUNT LIMIT 5;
+```
+# Example Results
 ```
 ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') AS window_start, EDIT_COUNT FROM GLOBAL_COUNT LIMIT 5;
-```
-```
 +--------------------------------------------------------------------------+--------------------------------------------------------------------------+
 
 |WINDOW_START                                                              |EDIT_COUNT                                                                |
