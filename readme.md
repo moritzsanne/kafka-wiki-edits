@@ -24,13 +24,15 @@ python producer.py
 ```
 ### Aggregation mit ksql
 
-#bash into ksql_cli:
+bash into ksql_cli container:
+
 `sudo docker exec -it ksqldb-cli ksql http://ksqldb-server:8088`
 
-#initiate ksql streams and aggregation queries
+initiate ksql streams and aggregation queries:
+
 `ksql> run script /app/queries/queries.sql;`
 
-Die Ergebnisse der Echtzeit Aggregationen können dann wie folgt über ksql abgefragt werden:
+Die Ergebnisse der Echtzeit Aggregationen können wir dann wie folgt über ksql abgefragt werden:
 
 #Globale Edits pro Minute
 ```ksql> SELECT TIMESTAMPTOSTRING(WINDOWSTART, 'yyyy-MM-dd HH:mm:ss') 
