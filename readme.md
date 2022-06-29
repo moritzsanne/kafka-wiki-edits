@@ -1,5 +1,5 @@
 # Data Engineering Challenge
-![Alt text](./overview_chart.svg)
+![Alt text](./chart.png)
 # Ziel
 Ziel war es eine Kafka Mockup Umgebung mit den folgenden Komponenten aufzusetzen:
 
