@@ -1,12 +1,10 @@
 # Data Engineering Challenge
 ![Alt text](./chart.png)
-# Ziel
-Ziel war es eine Kafka Mockup Umgebung mit den folgenden Komponenten aufzusetzen:
+# Aim
+The aim of this project was to create a mock-up kafka environment consisting of the following components
 
-- Kafka Producer: Emitiert mit Intervall zwischen 0 und 1s mockup Wikipedia Edits aus sample_data.csv
-	- Umgesetzt mit python und kafka-python
-- Kafka Consumer: Aggregation der Wikipedia edits in Zeitfenstern von einer Minute. Global und gefiltert für die deutsche Wikipedia.
-	- Ich habe mich an dieser Stelle entschieden die Aggregationen mit kSQL umzusetzen um die Aggregationen über Zeitfenster nicht neu in Python implementieren zu müssen.
+- Kafka Producer: Emits synthetic wikipedia edits with an interval between 0 and 1 s 
+- Kafka Consumer: The data is processed by kSQL to produce minutewise aggregates counting global edits and the edits to the german wikipedia.
 	
 
 # How to setup:
@@ -32,7 +30,7 @@ initiate ksql streams and aggregation queries:
 
 `ksql> run script /app/queries/queries.sql;`
 
-Die Ergebnisse der Echtzeit Aggregationen können wir dann wie folgt über ksql abgefragt werden:
+The results can be queried as follows:
 
 #Globale Edits pro Minute
 ```
